@@ -1,0 +1,57 @@
+.movie-post-modal-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.246);
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.movie-post-modal-closer {
+    cursor: pointer;
+    width: 100%; /* 100% do pai da largura */
+    height: 100%;
+    position: absolute; /* se nao tiver pintado, fica transparente para elementos abaixo dele */
+    z-index: 1;
+}
+
+.movie-post-modal-content {
+    width: 70%;
+    height: 50%;
+    background-color: white;
+    /* logica para definir o que é pintado a frente (relacao de z index) */
+    z-index: 2;
+    position: relative;
+    border-radius: 18px 0;
+    overflow: hidden;
+
+    
+}
+
+.movie-post-modal-content header {
+    background-color: #08323d;
+
+    height: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.movie-post-modal-content header h3 {
+    color: white;
+    margin: 0;
+}
+
+.movie-post-modal-content form { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100% - 50px);
+
+    flex-direction: column;
+}
