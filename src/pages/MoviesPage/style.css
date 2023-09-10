@@ -1,3 +1,8 @@
+.movies-page-h1 {
+    margin: 20px 40px;
+    color: #ffffff;
+}
+
 .movies-page-container {
     display: flex;
     flex-direction: row;

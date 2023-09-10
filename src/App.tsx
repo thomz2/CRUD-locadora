@@ -11,11 +11,11 @@ import { addMoviesAction } from './services/actions/movieAction';
 
 function App() {
 
-  const [movies, setMovies] = useState<movieGetType[]>([]);
+  // const [movies, setMovies] = useState<movieGetType[]>([]);
 
-  useEffect(() => {
-    getMoviesObserver(setMovies, [2023, 2022]);
-  }, []);
+  // useEffect(() => {
+  //   getMoviesObserver(setMovies);
+  // }, []);
 
   return (
     <Router>

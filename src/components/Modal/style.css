@@ -1,7 +1,7 @@
-.movie-post-modal-container {
+.movie-modal-container {
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.246);
+    background-color: rgba(0, 0, 0, 0.546);
     position: fixed;
     top: 0;
     left: 0;
@@ -11,7 +11,7 @@
     align-items: center;
 }
 
-.movie-post-modal-closer {
+.movie-modal-closer {
     cursor: pointer;
     width: 100%; /* 100% do pai da largura */
     height: 100%;
@@ -19,20 +19,42 @@
     z-index: 1;
 }
 
-.movie-post-modal-content {
+/* .movie-post-modal-content {
     width: 70%;
     height: 50%;
     background-color: white;
-    /* logica para definir o que é pintado a frente (relacao de z index) */
+    logica para definir o que é pintado a frente (relacao de z index)
     z-index: 2;
     position: relative;
     border-radius: 18px 0;
+    overflow: hidden;   
+} */
+
+.movie-modal-content {
+
+    background-color: white;
+
+    z-index: 2;
+    position: relative;
+    
+    /* display: flex; */
+    /* text-align: center; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    flex-direction: column;
+    border-radius: 18px 0;
     overflow: hidden;
 
-    
 }
 
-.movie-post-modal-content header {
+.config {
+
+    width: 40%;
+    height: 20%;
+}
+
+
+.movie-modal-content header {
     background-color: #08323d;
 
     height: 50px;
@@ -42,16 +64,50 @@
     align-items: center;
 }
 
-.movie-post-modal-content header h3 {
+.movie-modal-content header h4 {
     color: white;
     margin: 0;
 }
 
-.movie-post-modal-content form { 
+/* Não usando ainda */
+/* .movie-post-modal-content form { 
     display: flex;
     justify-content: center;
     align-items: center;
     height: calc(100% - 50px);
 
     flex-direction: column;
+} */
+
+.flexbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    margin: 10px;
+}
+
+button.botao-nao-pode-confirmar {
+
+    margin-top: 10px;
+    
+    background-color: #841d0b;
+    color: rgb(176, 176, 176);
+
+    transition: background-color 0.4s ease;
+    transition: color 0.4s ease;
+}
+
+button.botao-pode-confirmar {
+
+    margin-top: 10px;
+
+    background-color: #e63617;
+    color: rgb(255, 255, 255);
+
+    cursor: pointer;
+
+    transition: background-color 0.4s ease;
+    transition: color 0.4s ease;
 }

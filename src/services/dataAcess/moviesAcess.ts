@@ -1,8 +1,11 @@
+import firebase from "firebase";
 import { db } from "../../firebaseConfig";
 import { movieAddType, movieType } from "../../interfaces/movieInterface";
+import 'firebase/storage';
 
 const moviesReferences = db.collection('filmes');
 const generoFilmeReferences = db.collection('generoFilme');
+const storage = firebase.storage();
 
 export async function addMoviesAcess(body: movieType) {
 
@@ -51,7 +54,12 @@ export async function getMoviesAcess() {
     return response;
 };
 
-// deletar referencias de generoFilme 
+export async function getGeneroFilmeListAcess() {
+    const response = await generoFilmeReferences.get();
+    return response;
+}
+
+// deletar referencias de generoFilme e imagem
 export async function deleteMoviesAcess(id: string) {
 
     const MovieRef = moviesReferences.doc(id);
@@ -66,6 +74,17 @@ export async function deleteMoviesAcess(id: string) {
         });
         Promise.all(deletePromises);
     });
+
+    const imgRef = storage.ref().child(`images/${id}`);
+
+    imgRef
+        .delete()
+        .then(() => {
+            console.log('Imagem', id, 'excluida!');
+        })
+        .catch((error) => {
+            console.error('erro ao excluir imagem no deleteMovieAcess:', error);
+        });
 
     return response;
 };

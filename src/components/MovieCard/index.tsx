@@ -10,9 +10,10 @@ interface IProps {
     filme: movieGetType;
     onRemove?: () => void;
     onConfig?: () => void;
+    buttons?: boolean
 }
 
-const MovieCard: React.FC<IProps> = ({ filme, onRemove, onConfig }) => {
+const MovieCard: React.FC<IProps> = ({ filme, onRemove, onConfig, buttons = true }) => {
  
     const { isOpen, openModal, closeModal, isDelete, setConfig, setDelete, setFilme } = useModal();
 
@@ -22,16 +23,16 @@ const MovieCard: React.FC<IProps> = ({ filme, onRemove, onConfig }) => {
                 className="movie-background"
                 style={{ backgroundImage: `url(${filme.imagem})` }}
             >
-                {/* {onConfig && ( */}
+                {buttons && (
                     <button className="config-button" onClick={() => {openModal(); setConfig(); setFilme(filme)}}>
                         <BsFillGearFill />
                     </button>
-                {/* )} */}
-                {/* {onRemove && ( */}
+                )}
+                {buttons && (
                     <button className="remove-button" onClick={() => {openModal(); setDelete(); setFilme(filme)}}>
                         <FaTimes />
                     </button>
-                {/* )} */}
+                )}
             </div>
             <div className="movie-details">
                 <h2 className="movie-title">{filme.titulo}</h2>

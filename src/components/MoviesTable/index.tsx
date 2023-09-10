@@ -9,16 +9,19 @@ import './style.css'
 
 interface IProps {
     movies: movieGetType[];
+    buttons?: boolean
 };
 
-const MoviesTable: React.FC<IProps> = ({ movies }) => {
+const MoviesTable: React.FC<IProps> = ({ movies, buttons = true }) => {
 
     const carousel = useRef<any>();
     const [largura, setLargura] = useState<number>(0);
 
     useEffect(() => {
+        if (carousel.current?.scrollWidth != 0 && carousel.current?.offsetWidth != 0) {
+            setLargura(carousel.current?.scrollWidth - carousel.current?.offsetWidth);
+        }
         console.log(carousel.current?.scrollWidth, carousel.current?.offsetWidth)   
-        setLargura(carousel.current?.scrollWidth - carousel.current?.offsetWidth);
     }, [carousel.current]);
 
     return (
@@ -35,7 +38,7 @@ const MoviesTable: React.FC<IProps> = ({ movies }) => {
                 >
                     {movies.map(filme => (
                         <motion.div className="item"> 
-                            <MovieCard filme={filme}/>
+                            <MovieCard filme={filme} buttons={buttons}/>
                         </motion.div>
                     ))}
                 </motion.div>
