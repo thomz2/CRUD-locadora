@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { movieGetType } from "../../interfaces/movieInterface";
 import BotaoDD from "../../commons/BotaoDD";
 import { deleteMoviesAction } from "../../services/actions/movieAction";
+import MovieCard from "../MovieCard";
+import { motion } from 'framer-motion'
 
 import './style.css'
 
@@ -9,31 +11,36 @@ interface IProps {
     movies: movieGetType[];
 }
 
-const MoviesTable: React.FC<IProps> = ({movies}) => {
-    return <>
-        <table className="movies-table-container">
-            <tr className="movies-table-header">
-                <th>Titulo</th>
-                <th>Ano</th>
-                <th>Actions</th>
-            </tr>
+const MoviesTable: React.FC<IProps> = ({ movies }) => {
 
-            {movies.map((elem) => (
-                <tr className="movies-table-body">
-                    <td>
-                        <p>{elem.titulo}</p>
-                    </td>
-                    <td>
-                        <p>{elem.ano}</p>
-                    </td>
-                    <td>
-                        <BotaoDD text='Delete' onClick={() => deleteMoviesAction(elem.id)} />
-                    </td>
-                </tr>
-            ))}
-    
-        </table>
-    </>
+    const carousel = useRef<any>();
+    const [largura, setLargura] = useState<number>(0);
+
+    useEffect(() => {
+        console.log(carousel.current)
+        setLargura(carousel.current?.scrollWidth - carousel.current?.offsetWidth);
+    }, []);
+
+    return (
+        <div className="pai">
+
+            <motion.div ref={carousel} className="carousel" whileTap={{ cursor: "grabbing" }}>
+                <motion.div 
+                className="inner"
+                drag="x"
+                dragConstraints= {{ right: 0, left: -largura }}
+                >
+                    {movies.map(filme => (
+                        <motion.div className="item"> 
+                            <MovieCard filme={filme}  />
+                        </motion.div>
+                    ))}
+                </motion.div>
+            </motion.div>
+
+        </div>
+    )
+
 }
 
 export default MoviesTable;

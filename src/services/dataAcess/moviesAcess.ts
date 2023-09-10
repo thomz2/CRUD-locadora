@@ -2,6 +2,7 @@ import { db } from "../../firebaseConfig";
 import { movieAddType, movieType } from "../../interfaces/movieInterface";
 
 const moviesReferences = db.collection('filmes');
+const generoFilmeReferences = db.collection('generoFilme');
 
 export async function addMoviesAcess(body: movieType) {
 
@@ -9,6 +10,7 @@ export async function addMoviesAcess(body: movieType) {
         titulo: body.titulo,
         ano: body.ano,
         descricao: body.descricao,
+        imagem: body.imagem
         // GeneroFilme: db.collection('generoFilme').doc(body.idGeneroFilme)
     }
 
@@ -22,6 +24,7 @@ export async function setMoviesAcess(body: movieType, id: string) {
         titulo: body.titulo,
         ano: body.ano,
         descricao: body.descricao,
+        imagem: body.imagem
         // GeneroFilme: db.collection('generoFilme').doc(body.idGeneroFilme)
     }
 
@@ -35,6 +38,7 @@ export async function updateMoviesAcess(body: movieType, id: string) {
         titulo: body.titulo,
         ano: body.ano,
         descricao: body.descricao,
+        imagem: body.imagem
         // GeneroFilme: db.collection('generoFilme').doc(body.idGeneroFilme)
     }
 
@@ -47,7 +51,21 @@ export async function getMoviesAcess() {
     return response;
 };
 
+// deletar referencias de generoFilme 
 export async function deleteMoviesAcess(id: string) {
-    const response = await moviesReferences.doc(id).delete();
+
+    const MovieRef = moviesReferences.doc(id);
+    const response = await MovieRef.delete();
+
+    const deletePromises:Promise<void>[]  = [];
+
+    // logica para apagar todos os generofilme com a chave do filme apagado
+    generoFilmeReferences.where('FilmeRef', '==', MovieRef).onSnapshot((snapshot) => {
+        snapshot.forEach((doc) => {
+            deletePromises.push(doc.ref.delete());
+        });
+        Promise.all(deletePromises);
+    });
+
     return response;
 };

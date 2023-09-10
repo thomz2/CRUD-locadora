@@ -24,6 +24,7 @@ const MovieAddPage: React.FC = () => {
     const [idGeneroFilme, setIdGeneroFilme] = useState<string>('');
     const [imagem, setImagem] = useState<string | ArrayBuffer | null>(null);
     const [imgFile, setImgFile] = useState<File | null>(null);
+    // const [imgURL, setImgURL] = useState<string>('');
     const [generos, setGeneros] = useState<string[]>([]);
 
     useEffect(()=> {
@@ -73,23 +74,36 @@ const MovieAddPage: React.FC = () => {
 
         const newMovieRef = db.collection('filmes').doc();
 
-        const novoFilme: movieType = {
-            titulo,
-            ano,
-            descricao,
-        }
-
-        setMoviesAction(novoFilme, newMovieRef.id);
-
         // fazer upload da imagem
         const storageRef = storage.ref();
         const fileName = `${newMovieRef.id}`
         const imageRef = storageRef.child(`images/${fileName}`);
-
+        
         if (imgFile)
             imageRef.put(imgFile)
-                .then((snapshot) => console.log("URL: ", snapshot.ref.getDownloadURL()))
+                // .then((snapshot) => console.log("URL: ", snapshot.ref.getDownloadURL()))
+                .then((snapshot) => {
+                    snapshot.ref.getDownloadURL()
+                        .then((valor) => {
+
+                            const novoFilme: movieType = {
+                                titulo,
+                                ano,
+                                descricao,
+                                imagem: valor
+                            };
+
+                            console.log('NOVO FILME: ', novoFilme);
+
+                            setMoviesAction(novoFilme, newMovieRef.id);
+
+                        })
+                        .catch((error) => console.log('erro no getDownloadURL: ', error));
+                })
                 .catch((error) => console.log('erro no put imgFile: ', error))
+
+
+
 
         // depois de setar o filme e a imagem, seta a relação do filme com os generos
         generos.forEach((g) => {

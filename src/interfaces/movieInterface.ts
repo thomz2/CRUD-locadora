@@ -4,14 +4,14 @@ export interface movieType {
     titulo: string;
     ano: number;
     descricao: string;
-    imagem?: string | ArrayBuffer | null;
+    imagem: string;
 }
 
 export interface movieAddType {
     titulo: string;
     ano: number;
     descricao: string;
-    imagem?: string | ArrayBuffer | null;
+    imagem: string;
 }
 
 export interface movieGetType {
@@ -19,7 +19,7 @@ export interface movieGetType {
     ano: number;
     descricao: string;
     id: string
-    imagem?: string | ArrayBuffer | null;
+    imagem: string;
 }
 
 export interface GeneroFilmeAddType {

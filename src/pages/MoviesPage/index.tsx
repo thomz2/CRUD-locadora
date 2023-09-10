@@ -7,6 +7,8 @@ import MoviesTable from "../../components/MoviesTable";
 
 import './style.css'
 import MoviePostModal from "../../components/MoviePostModal";
+import Navbar from "../../components/Navbar";
+import MovieCard from "../../components/MovieCard";
 
 
 const MoviesPage: React.FC = () => {
@@ -17,15 +19,13 @@ const MoviesPage: React.FC = () => {
         getMoviesObserver(setMovies, [2023, 2022]);
     }, []);
     
-    return <div className="movies-page-container">
-        <MoviePostModal />
-        <MoviesTable movies={movies}/>
-        <BotaoDD text='Adicionar' onClick={() => addMoviesAction({
-            titulo: 'teste',
-            ano: 2020,
-            descricao: 'bla bla bla',
-        })} />
-    </div>
+    return <>
+        <Navbar homeStr='../' addStr='../adicionarFilme' searchStr='../consultarFilme' userStr='../perfil'/>
+        <div className="movies-page-container">
+            <MoviesTable movies={movies}/>
+            
+        </div>
+    </> 
 } 
 
 export default MoviesPage;

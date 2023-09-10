@@ -26,9 +26,6 @@ const Navbar: React.FC<IProps> = ({homeStr, addStr, searchStr, userStr}) => {
         <button className="nav-button" onClick={() => navigate(addStr)}>
             <LuPlusSquare />
         </button>
-        <button className="nav-button" onClick={() => navigate(searchStr)}>
-            <BiSearchAlt2 />
-        </button>
       </div>
       <div className="right-button">
         <button className="nav-button" onClick={() => navigate(userStr)}>

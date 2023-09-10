@@ -25,6 +25,7 @@ export async function getMoviesAction() {
     return movies;
 }
 
+// deletar referencias de generoFilme 
 export async function deleteMoviesAction(id: string) {
     const response = await deleteMoviesAcess(id);
     return response;

@@ -1,10 +1,13 @@
 import React from 'react'
 
 import './style.css'
+import Navbar from '../../components/Navbar';
 
 const ConsultaPage: React.FC = () => {
   return (
-    <div></div>
+    <>
+        <Navbar homeStr='../' addStr='../adicionarFilme' searchStr='../consultarFilme' userStr='../perfil'/>
+    </>
   )
 }
 
