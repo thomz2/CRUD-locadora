@@ -8,7 +8,6 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PerfilPage from './pages/PerfilPage';
 import MovieAddPage from './pages/MovieAddPage';
 import { addMoviesAction } from './services/actions/movieAction';
-import ConsultaPage from './pages/ConsultaPage';
 
 function App() {
 
@@ -23,7 +22,6 @@ function App() {
       <Routes>
         <Route path='/' element={<MoviesPage/>} />
         <Route path='/adicionarFilme' element={<MovieAddPage />} />
-        <Route path='/consultarFilme' element={<ConsultaPage />} />
         <Route path='/perfil' element={<PerfilPage />} />
       </Routes>
     </Router>

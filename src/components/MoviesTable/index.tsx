@@ -35,7 +35,7 @@ const MoviesTable: React.FC<IProps> = ({ movies }) => {
                 >
                     {movies.map(filme => (
                         <motion.div className="item"> 
-                            <MovieCard filme={filme} onRemove={() => console.log('')} onConfig={() => console.log('')} />
+                            <MovieCard filme={filme}/>
                         </motion.div>
                     ))}
                 </motion.div>

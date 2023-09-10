@@ -1,9 +1,10 @@
 .pai {
     width: 100%;
-    max-width: 900px;
+    max-width: 1300px;
     margin: 0 auto;
     min-height: 100vh;
     display: flex;
+    justify-content: center;
 }
 
 .inner {
