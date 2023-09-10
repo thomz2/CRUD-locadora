@@ -1,24 +1,31 @@
 import React from 'react';
 import { movieGetType } from '../../interfaces/movieInterface';
-import { IoMdRemove } from 'react-icons/io'
+import { FaTimes } from 'react-icons/fa'
+import { BsFillGearFill } from 'react-icons/bs'
 
 import './style.css'
 
 interface IProps {
     filme: movieGetType;
-    onClick?: () => void;
+    onRemove?: () => void;
+    onConfig?: () => void;
 }
 
-const MovieCard: React.FC<IProps> = ({ filme, onClick }) => {
+const MovieCard: React.FC<IProps> = ({ filme, onRemove, onConfig }) => {
     return (
         <div className="movie-card">
             <div
                 className="movie-background"
                 style={{ backgroundImage: `url(${filme.imagem})` }}
             >
-                {onClick && (
-                    <button className="remove-button" onClick={onClick}>
-                        <IoMdRemove />
+                {onConfig && (
+                    <button className="config-button" onClick={onConfig}>
+                        <BsFillGearFill />
+                    </button>
+                )}
+                {onRemove && (
+                    <button className="remove-button" onClick={onRemove}>
+                        <FaTimes />
                     </button>
                 )}
             </div>

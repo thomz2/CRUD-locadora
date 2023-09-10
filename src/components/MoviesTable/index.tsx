@@ -9,7 +9,7 @@ import './style.css'
 
 interface IProps {
     movies: movieGetType[];
-}
+};
 
 const MoviesTable: React.FC<IProps> = ({ movies }) => {
 
@@ -17,9 +17,9 @@ const MoviesTable: React.FC<IProps> = ({ movies }) => {
     const [largura, setLargura] = useState<number>(0);
 
     useEffect(() => {
-        console.log(carousel.current)
+        console.log(carousel.current?.scrollWidth, carousel.current?.offsetWidth)   
         setLargura(carousel.current?.scrollWidth - carousel.current?.offsetWidth);
-    }, []);
+    }, [carousel.current]);
 
     return (
         <div className="pai">
@@ -29,10 +29,13 @@ const MoviesTable: React.FC<IProps> = ({ movies }) => {
                 className="inner"
                 drag="x"
                 dragConstraints= {{ right: 0, left: -largura }}
+                initial={{ x: 100 }}
+                animate={{ x: 0}}
+                transition={{ duration: 0.8 }}
                 >
                     {movies.map(filme => (
                         <motion.div className="item"> 
-                            <MovieCard filme={filme}  />
+                            <MovieCard filme={filme} onRemove={() => console.log('')} onConfig={() => console.log('')} />
                         </motion.div>
                     ))}
                 </motion.div>

@@ -31,6 +31,21 @@
     cursor: pointer;
 }
 
+.config-button:hover {
+    color: #e74c3c;
+}
+
+.config-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+}
+
 .remove-button:hover {
     color: #e74c3c;
 }
