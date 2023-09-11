@@ -1,3 +1,5 @@
+// TODO: Feito na pressa, organizar depois
+
 import React, { useState, useEffect } from 'react'
 
 import './style.css'
@@ -61,7 +63,7 @@ const Modal: React.FC<IProps> = () => {
       setImagem(movie.imagem);
     }
   }, [movie]);
-
+  
   const storage = firebase.storage();
 
   const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
@@ -106,9 +108,7 @@ const Modal: React.FC<IProps> = () => {
     e.preventDefault();
 
     if (movie) {
-      const movieRef = db.collection('filmes').doc(movie.id)
 
-      // TODO: Mudar imagem caso necessario (recomendação: usar state para saber se outra imagem foi colocada)
       const storageRef = storage.ref();
       const fileName = `${id}`
       const imageRef = storageRef.child(`images/${fileName}`);
@@ -218,10 +218,12 @@ const Modal: React.FC<IProps> = () => {
                     placeholder={`${movie.titulo}`}
                     value={confirmText}
                     onChange={handlerMovieText}
-                  > {`Digite `} <strong style={{ userSelect: 'none' }}>{`${movie.titulo}`}</strong> {` para confirmar exclusão`} </InputDD>
+                  > 
+                    {`Digite `} <strong style={{ userSelect: 'none' }}>{`${movie.titulo}`}</strong> {` para confirmar exclusão`} 
+                  </InputDD>
                   <BotaoDD
                     text='Confirmar'
-                    onClick={confirmText == movie.titulo ? () => confirmarExclusão(movie.id) : () => { }}
+                    onClick={confirmText == movie.titulo ? () => confirmarExclusão(movie.id) : () => {}}
                     className={confirmText == movie.titulo ? 'botao-pode-confirmar' : 'botao-nao-pode-confirmar'}
                   />
                 </div>
@@ -288,7 +290,16 @@ const Modal: React.FC<IProps> = () => {
               </div>
 
               <div className='div-botao-dd-container'>
-                <BotaoDD text='Alterar Filme' onClick={handleChange} />
+                <BotaoDD text='Alterar Filme' 
+                  onClick={ 
+                    (titulo == '' || Number.isNaN(ano) || descricao == '' ) ? 
+                    () => {} : handleChange
+                  } 
+                  className={
+                    !(titulo == '' || Number.isNaN(ano) || descricao == '' ) ? 
+                    'botao-pode-confirmar' : 'botao-nao-pode-confirmar'
+                  }
+                />
               </div>
             </div>
             {/* FIM */}

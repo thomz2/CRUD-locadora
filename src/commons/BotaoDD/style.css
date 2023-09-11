@@ -6,3 +6,28 @@
     font-size: 18px;
     border: none;
 }
+
+button.botao-nao-pode-confirmar {
+
+    margin-top: 10px;
+    
+    background-color: #841d0b;
+    color: rgb(176, 176, 176);
+
+    transition: background-color 0.4s ease;
+    transition: color 0.4s ease;
+}
+
+
+button.botao-pode-confirmar {
+
+    margin-top: 10px;
+
+    background-color: #e63617;
+    color: rgb(255, 255, 255);
+
+    cursor: pointer;
+
+    transition: background-color 0.4s ease;
+    transition: color 0.4s ease;
+}

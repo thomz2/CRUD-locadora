@@ -1,3 +1,27 @@
+button.botao-nao-pode-confirmar {
+
+    margin-top: 10px;
+    
+    background-color: #841d0b;
+    color: rgb(176, 176, 176);
+
+    transition: background-color 0.4s ease;
+    transition: color 0.4s ease;
+}
+
+button.botao-pode-confirmar {
+
+    margin-top: 10px;
+
+    background-color: #e63617;
+    color: rgb(255, 255, 255);
+
+    cursor: pointer;
+
+    transition: background-color 0.4s ease;
+    transition: color 0.4s ease;
+}
+
 .movie-modal-container {
     width: 100vw;
     height: 100vh;
@@ -83,17 +107,6 @@
     margin: 10px;
 }
 
-button.botao-nao-pode-confirmar {
-
-    margin-top: 10px;
-    
-    background-color: #841d0b;
-    color: rgb(176, 176, 176);
-
-    transition: background-color 0.4s ease;
-    transition: color 0.4s ease;
-}
-
 .page-container {
     background-color: #08323d;
     color: #e63617;
@@ -123,17 +136,6 @@ button.botao-nao-pode-confirmar {
     margin: 8px;
 }
 
-.generos-container button {
-    padding: 8px 16px;
-    margin: 4px;
-    background-color: #08323d;
-    color: white;
-    border: none;
-    cursor: pointer;
-    outline: none;
-    transition: background-color 0.3s;
-}
-
 .dd-container {
     display: flex;
     flex-direction: column;
@@ -154,14 +156,14 @@ button.botao-nao-pode-confirmar {
     margin: 4px;
 }
 
-.form-container button {
+/* .form-container button {
     color: #fff;
     cursor: pointer;
-}
+} */
 
-.form-container button:hover {
+/* .form-container button:hover {
     background-color: #d43216;
-}
+} */
 
 .drop-area {
     border: 2px dashed #08323d;
@@ -202,21 +204,4 @@ button.botao-nao-pode-confirmar {
 
 .textarea-DD-container {
     padding-right: 10px;
-}
-
-button.genero-selecionado {
-    background-color: #e63617;
-}
-
-button.botao-pode-confirmar {
-
-    margin-top: 10px;
-
-    background-color: #e63617;
-    color: rgb(255, 255, 255);
-
-    cursor: pointer;
-
-    transition: background-color 0.4s ease;
-    transition: color 0.4s ease;
 }

@@ -38,6 +38,10 @@
     transition: background-color 0.3s;
 }
 
+.generos-container button:hover {
+    background-color: #d43216;
+}
+
 .dd-container {
     display: flex;
     flex-direction: column;
@@ -57,12 +61,7 @@
     margin: 4px;
 }
 
-.form-container button {
-    color: #fff;
-    cursor: pointer;
-}
-
-.form-container button:hover {
+#bg:hover {
     background-color: #d43216;
 }
 
