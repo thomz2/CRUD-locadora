@@ -163,8 +163,9 @@ const MovieAddPage: React.FC = () => {
                             {['Ação', 'Comédia', 'Drama', 'Aventura', 'Suspense'].map((genero) => (
                                 <button
                                     key={genero}
-                                    className={generos.includes(genero) ? 'genero-selecionado' : ''}
+                                    className={(generos.includes(genero) ? 'genero-selecionado' : '')}
                                     onClick={(e) => toggleGenero(e, genero)}
+                                    id='bg'
                                 >
                                     {genero}
                                 </button>
