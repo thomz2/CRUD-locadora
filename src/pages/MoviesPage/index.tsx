@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { addMoviesAction, deleteMoviesAction, getMoviesByGenreAction } from "../../services/actions/movieAction";
-import BotaoDD from "../../commons/BotaoDD";
 import { getMoviesObserver, getMoviesWGenresObserver} from "../../services/observers/moviesObserver";
 import { movieGetType } from "../../interfaces/movieInterface";
 import MoviesTable from "../../components/MoviesTable";
@@ -8,7 +6,6 @@ import MoviesTable from "../../components/MoviesTable";
 import './style.css'
 import Modal from "../../components/Modal";
 import Navbar from "../../components/Navbar";
-import MovieCard from "../../components/MovieCard";
 import { ModalProvider } from "../../components/ModalContext";
 
 const MoviesPage: React.FC = () => {

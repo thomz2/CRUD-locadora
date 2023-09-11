@@ -29,7 +29,6 @@ const UserProfile: React.FC = () => {
         <Navbar homeStr='../' addStr='../adicionarFilme' searchStr='../consultarFilme' userStr='../perfil'/>
         <div className="profile">
             <div className='h2-container'>
-
                 <h2>{user.loterica}</h2>
             </div>
             <div className="user-info">

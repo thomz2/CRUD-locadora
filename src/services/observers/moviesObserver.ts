@@ -21,7 +21,6 @@ export function getMoviesObserver (
     });
 }
 
-//TODO: observer do generofilme
 export function getMoviesWGenresObserver (
     callback: React.Dispatch<React.SetStateAction<movieGetType[]>>
 ) {
@@ -36,12 +35,20 @@ export function getMoviesWGenresObserver (
                 genero: doc.data().genero,
                 id: doc.id
             });
-
-            // movies.push({
-            //     ...(doc.data() as movieGetType),
-            //     id: doc.id
-            // })
         });
         callback(movies);
+    });
+}
+
+export function getMovieGenresObserver (
+    callback: React.Dispatch<React.SetStateAction<string[]>>,
+    titulo: string
+) {
+    generoFilmeReference.where('titulo', '==', titulo).onSnapshot((snapshot) => {
+        const gens: any[] = [];
+        snapshot.forEach((doc) => {
+            gens.push(doc.data().genero);
+        });
+        callback(gens);
     });
 }

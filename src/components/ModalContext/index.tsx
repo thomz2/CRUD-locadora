@@ -29,6 +29,7 @@ export const ModalProvider: React.FC<IProps> = ({ children }) => {
 
   const closeModal = () => {
     setIsOpen(false);
+    setMovie(null);
   };
 
   const setDelete = () => {

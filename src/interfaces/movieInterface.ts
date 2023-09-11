@@ -21,15 +21,3 @@ export interface movieGetType {
     id: string
     imagem: string;
 }
-
-export interface GeneroFilmeAddType {
-    idFilme: firebase.firestore.DocumentReference<firebase.firestore.DocumentData>
-    idGenero: firebase.firestore.DocumentReference<firebase.firestore.DocumentData>
-}
-
-// TODO: fazer logica desse enquanto faço lista de filmes
-export interface GeneroFilmeGetType {
-    filme: movieGetType;
-    idGenero?: firebase.firestore.DocumentReference<firebase.firestore.DocumentData>
-    genero: string
-}

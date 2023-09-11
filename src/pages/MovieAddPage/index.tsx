@@ -21,7 +21,6 @@ const MovieAddPage: React.FC = () => {
     const [titulo, setTitulo] = useState<string>('');
     const [ano, setAno] = useState<number>(NaN);
     const [descricao, setDescricao] = useState<string>('');
-    const [idGeneroFilme, setIdGeneroFilme] = useState<string>('');
     const [imagem, setImagem] = useState<string | ArrayBuffer | null>(null);
     const [imgFile, setImgFile] = useState<File | null>(null);
     // const [imgURL, setImgURL] = useState<string>('');
@@ -111,7 +110,7 @@ const MovieAddPage: React.FC = () => {
                                     GeneroRef: GenRef,
                                     ...novoFilme,
                                     genero: g
-                                }).catch((error) => console.log('erro no forEach dos generos: ', error));
+                                }).catch((error) => console.log('erro no set de GF do forEach dos generos: ', error));
                             });
 
                         })

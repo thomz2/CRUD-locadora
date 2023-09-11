@@ -62,23 +62,25 @@ export async function getGeneroFilmeListAcess() {
 // deletar referencias de generoFilme e imagem
 export async function deleteMoviesAcess(id: string) {
 
+    const deletePromises:Promise<void>[]  = [];
     const MovieRef = moviesReferences.doc(id);
+
     const response = await MovieRef.delete();
 
-    const deletePromises:Promise<void>[]  = [];
 
     // logica para apagar todos os generofilme com a chave do filme apagado
     generoFilmeReferences.where('FilmeRef', '==', MovieRef).onSnapshot((snapshot) => {
         snapshot.forEach((doc) => {
             deletePromises.push(doc.ref.delete());
         });
-        Promise.all(deletePromises);
     });
+    
+    await Promise.all(deletePromises);
+    
 
     const imgRef = storage.ref().child(`images/${id}`);
-
-    imgRef
-        .delete()
+    
+    imgRef.delete()
         .then(() => {
             console.log('Imagem', id, 'excluida!');
         })
@@ -88,3 +90,20 @@ export async function deleteMoviesAcess(id: string) {
 
     return response;
 };
+
+export async function deleteMovieGenresAcess(id: string) {
+
+    const MovieRef = moviesReferences.doc(id);
+
+    const deletePromises:Promise<void>[]  = [];
+
+    // logica para apagar todos os generofilme com a chave do filme apagado
+    generoFilmeReferences.where('FilmeRef', '==', MovieRef).onSnapshot((snapshot) => {
+        snapshot.forEach((doc) => {
+            deletePromises.push(doc.ref.delete());
+        });
+    });
+
+    const promises = await Promise.all(deletePromises);
+    return promises[promises.length-1]
+}
