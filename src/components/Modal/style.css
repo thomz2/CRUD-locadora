@@ -22,6 +22,10 @@ button.botao-pode-confirmar {
     transition: color 0.4s ease;
 }
 
+button.botao-pode-confirmar:hover {
+    background-color: #ff4423;
+}
+
 .movie-modal-container {
     width: 100vw;
     height: 100vh;

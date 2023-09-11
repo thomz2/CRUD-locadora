@@ -8,7 +8,7 @@ interface IProps {
   className?: string;
 }
 
-const BotaoDD: React.FC<IProps> = ({text = ' ', onClick, className}) => {
+const BotaoDD: React.FC<IProps> = ({text = ' ', onClick, className = ''}) => {
   return (
     <>
       <button className={'botao-DD ' + className} onClick={onClick}>{text}</button>

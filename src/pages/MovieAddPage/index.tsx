@@ -193,7 +193,17 @@ const MovieAddPage: React.FC = () => {
                             </div>
                         </div>
                         <div className='div-botao-dd-container'>
-                            <BotaoDD text='Adicionar Filme' onClick={handleSubmit} />
+                            <BotaoDD 
+                                text='Adicionar Filme' 
+                                onClick={
+                                    !(generos.length == 0 || titulo == '' || Number.isNaN(ano) || descricao == '' || imagem == null) ?
+                                    handleSubmit : (e: FormEvent) => {e.preventDefault()}
+                                } 
+                                className={
+                                    !(generos.length == 0 || titulo == '' || Number.isNaN(ano) || descricao == '' || imagem == null) ?
+                                    'botao-pode-confirmar' : 'botao-nao-pode-confirmar'
+                                }
+                            />
                         </div>
                     </form>
                 </div>

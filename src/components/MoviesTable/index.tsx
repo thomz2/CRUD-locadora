@@ -22,7 +22,7 @@ const MoviesTable: React.FC<IProps> = ({ movies, buttons = true }) => {
             setLargura(carousel.current?.scrollWidth - carousel.current?.offsetWidth);
         }
         console.log(carousel.current?.scrollWidth, carousel.current?.offsetWidth)   
-    }, [carousel.current]);
+    }, [carousel.current, movies]);
 
     return (
         <div className="pai">
