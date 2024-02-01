@@ -27,11 +27,11 @@ const Navbar: React.FC<IProps> = ({homeStr, addStr, searchStr, userStr}) => {
             <LuPlusSquare />
         </button>
       </div>
-      <div className="right-button">
+      {/* <div className="right-button">
         <button className="nav-button" onClick={() => navigate(userStr)}>
             <FaUser />
         </button>
-      </div>
+      </div> */}
     </nav>
   );
 };
